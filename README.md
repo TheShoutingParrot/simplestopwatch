@@ -1,5 +1,5 @@
 # simplestopwatch
-A simple stop watch written which uses SDL2 and is written in C.
+A simple stop watch which uses SDL2 and is written in C.
 # Installation
 To install this program you have to run `make install` which will install the program to PREFIX/bin.
 # Configuration
