@@ -54,6 +54,8 @@ void die(const char *fname, const size_t l, const char *msg, ...) {
 	fprintf(stderr, "error from file %s on line %ld: ", fname, l);
 	vfprintf(stderr, msg, vargs);
 
+	fputc('\n', stderr);
+
 	va_end(vargs);
 
 	exit(EXIT_FAILURE);
