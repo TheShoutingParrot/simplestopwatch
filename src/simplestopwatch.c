@@ -1,3 +1,9 @@
+/*
+ * simplestopwatch
+ * Copyright © 2020 Victor Ocampo
+ * All rights reserved
+ */
+
 #include "simplestopwatch.h"
 #include "config.h"
 

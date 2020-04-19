@@ -1,5 +1,7 @@
 # simplestopwatch's Makefile
 # See LICENSE file for license details
+# Copyright © 2020 Victor Ocampo 
+# All rights reserved
 
 include config.mk
 

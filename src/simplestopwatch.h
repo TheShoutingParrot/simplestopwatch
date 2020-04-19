@@ -1,3 +1,9 @@
+/*
+ * simplestopwatch
+ * Copyright © 2020 Victor Ocampo
+ * All rights reserved
+ */
+
 #ifndef _SIMPLESTOPWATCH_H
 #define _SIMPLESTOPWATCH_H
 
