@@ -1,6 +1,8 @@
 #include "simplestopwatch.h"
 #include "config.h"
 
+// TODO: Replace everything except 'die' with 'SDL_LogError/Warn/Verbose' 
+
 void info(const char *fname, const size_t l, const char *msg, ...) {
 	va_list vargs;
 
@@ -51,8 +53,6 @@ void die(const char *fname, const size_t l, const char *msg, ...) {
 	
 	fprintf(stderr, "error from file %s on line %ld: ", fname, l);
 	vfprintf(stderr, msg, vargs);
-
-	fputc('\n', stderr);
 
 	va_end(vargs);
 

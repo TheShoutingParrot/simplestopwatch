@@ -67,6 +67,7 @@ int main(int argc, char *args[]) {
 	if(!initSdl())
 		die(__FILE__, __LINE__, "Failed to initialize SDL!");
 	verbose_info(__FILE__, __LINE__, "Initialization successful!");
+	
 
 	if(!loadMedia())
 		die(__FILE__, __LINE__, "Failed to load media!");
@@ -81,8 +82,8 @@ int main(int argc, char *args[]) {
 
 	SDL_GetWindowSize(gWindow, &w, &h);
 	
-	resizeWindow(w, h);
 	updateWindow();
+	resizeWindow(w, h);
 
 	while(!quit) {
 		while(SDL_PollEvent(&e)) {
@@ -116,9 +117,8 @@ bool initSdl(void) {
 		return false;
 	}
 
-	// TODO: Make these arguments configurable by command line arguments
 	gWindow = SDL_CreateWindow(WNAME, SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 
-			wwidth, wheight, SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE | SDL_WINDOW_BORDERLESS);
+			wwidth, wheight, SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE);
 	if(gWindow == NULL) {
 		warning(__FILE__, __LINE__, "Failed to create the window! %s", SDL_GetError());
 		return false;
@@ -294,17 +294,19 @@ void handleEvent(SDL_Event *e) {
 			}
 			break;
 		case SDL_KEYDOWN:
-			switch(e->key.keysym.sym) {
-				case SDLK_RETURN:
-				case SDLK_BACKSPACE:
-				case SDLK_SPACE:
-					timerPause();
-					break;
-				case SDLK_r:
-					timerRestart();
-					break;
-				default:
-					break;
+			if(e->key.keysym.mod == KMOD_NONE) {
+				switch(e->key.keysym.sym) {
+					case SDLK_RETURN:
+					case SDLK_BACKSPACE:
+					case SDLK_SPACE:
+						timerPause();
+						break;
+					case SDLK_r:
+						timerRestart();
+						break;
+					default:
+						break;
+				}
 			}
 
 			return;
@@ -391,19 +393,23 @@ void resizeWindow(int w, int h) {
 }
 
 void updateWindow(void) {
-	SDL_Rect textLocation;
+	int orgX, orgY;
 
 	SDL_SetRenderDrawColor(gRenderer, renderColor, renderColor, renderColor, renderColor);
 	SDL_RenderClear(gRenderer);
 
 	updateTimeString();
 
-	textLocation = timeText.location;
+	orgX = timeText.location.x;
+	orgY = timeText.location.y;
 	timeText = loadTextureFromRenderedText(timeString, textColor);
 	if(timeText.texture == NULL)
 		die(__FILE__, __LINE__, "Failed to load text");
-
-	timeText.location = textLocation;
+ 
+	timeText.location.w = timeText.width;
+	timeText.location.h = timeText.height;
+	timeText.location.x = orgX;
+	timeText.location.y = orgY;
 
 	SDL_RenderCopy(gRenderer, pauseButton.texture.texture, &pauseButton.texture.clip[pauseButton.state], &(pauseButton.texture.location));
 	SDL_RenderCopy(gRenderer, restartButton.texture.texture, &restartButton.texture.clip[restartButton.state], &(restartButton.texture.location));
