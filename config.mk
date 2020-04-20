@@ -1,5 +1,6 @@
 # paths
 PREFIX 		= /usr/local
+APPLICATIONS	= /usr/share/applications
 SDLINC 		= /usr/include/SDL2
 
 # SDL

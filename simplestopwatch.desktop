@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=simplestopwatch
+GenericName=stopwatch
+Comment=This is a graphical stopwatch.
+Keywords=time;timer;stopwatch;watch;
+Terminal=false
+Exec=simplestopwatch
+Icon=/usr/local/share/simplestopwatch/images/logo.png

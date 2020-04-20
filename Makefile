@@ -21,6 +21,7 @@ install: all
 	mkdir -p $(PREFIX)/bin
 	cp simplestopwatch $(PREFIX)/bin/simplestopwatch
 	chmod +x $(PREFIX)/bin/simplestopwatch
+	cp simplestopwatch.desktop $(APPLICATIONS)/simplestopwatch.desktop
 	mkdir -p $(PREFIX)/share/simplestopwatch
 	cp -r images/ $(PREFIX)/share/simplestopwatch/images/
 	cp -r fonts/ $(PREFIX)/share/simplestopwatch/fonts/
@@ -32,4 +33,4 @@ uninstall: clean
 clean:
 	rm -f simplestopwatch simplestopwatch.o util.o 
 
-.PHONE: all simplestopwatch install uninstall clean
+.PHONY: all simplestopwatch install uninstall clean
