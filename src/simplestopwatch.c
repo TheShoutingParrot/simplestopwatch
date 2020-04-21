@@ -176,6 +176,8 @@ texture_t loadTexture(const char *path) {
 	newTexture.width = loadedSurface->w;
 	newTexture.height = loadedSurface->h;
 
+	SDL_FreeSurface(loadedSurface);
+
 	return(newTexture);
 }
 
