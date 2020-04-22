@@ -1,9 +1,16 @@
+# Translating and improving the translations is very helpful! | ¡Traducir y mejorar las traducciones es muy útil! | Kääntäminen ja käännöksien  parantaminen on erittäin hyödyllistä!
 [Desktop Entry]
 Type=Application
 Name=simplestopwatch
 GenericName=stopwatch
-Comment=This is a graphical stopwatch.
-Keywords=time;timer;stopwatch;watch;
+GenericName[es]=cronómetro
+GenericName[fi]=sekuntikello
+Comment=This is a graphical stopwatch
+Comment[es]=Esto es un cronómetro gráfico
+Comment[fi]=Tämä on graafinen sekuntikello
+Keywords=time;timer;stopwatch;watch;cronometer;
+Keywords[es]=tiempo;reloj;cronómetro;
+Keywords[fi]=aika;ajastin;sekuntikello;ajanotto;
 Terminal=false
 Exec=simplestopwatch
 Icon=/usr/local/share/simplestopwatch/images/logo.png
